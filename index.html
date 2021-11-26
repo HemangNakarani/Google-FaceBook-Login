@@ -52,44 +52,12 @@
 
             console.log(user);
 
-            window.parent.postMessage(
-              {
-                type: "google-login",
-                credential,
-                user,
-              },
-              "*"
-            );
-
             var url =
               window.location != window.parent.location
-                ? document.referrer
+                ? document.referre
                 : document.location.href;
 
             console.log(url);
-
-            // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
-
-            // if (regex.test(url)) {
-            //   console.log(url);
-            //   console.log(user);
-
-            //   window.parent.postMessage(
-            //     {
-            //       type: "google-login",
-            //       credential,
-            //       user,
-            //     },
-            //     "*"
-            //   );
-            // } else {
-            //   window.parent.postMessage(
-            //     {
-            //       type: "google-login-error",
-            //     },
-            //     "*"
-            //   );
-            // }
           })
           .catch((error) => {
             // Handle Errors here.
@@ -116,35 +84,12 @@
 
             console.log(user);
 
-            window.parent.postMessage(
-              {
-                type: "facebook-login",
-                credential,
-                user,
-              },
-              "*"
-            );
-
             var url =
               window.location != window.parent.location
                 ? document.referrer
                 : document.location.href;
 
             console.log(url);
-
-            // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
-
-            // if (regex.test(url)) {
-            //   console.log(url);
-            //   console.log(user);
-            // } else {
-            //   window.parent.postMessage(
-            //     {
-            //       type: "facebook-login-error",
-            //     },
-            //     "*"
-            //   );
-            // }
           })
           .catch((error) => {
             // Handle Errors here.
