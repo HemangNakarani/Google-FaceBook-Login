@@ -49,36 +49,43 @@
             const token = credential.accessToken;
             // The signed-in user info.
             const user = result.user;
-            // ...
-            // check if parent has given domain
 
-            var url =
-              window.location != window.parent.location
-                ? document.referrer
-                : document.location.href;
+            window.parent.postMessage(
+              {
+                type: "google-login",
+                credential,
+                user,
+              },
+              "*"
+            );
 
-            regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
+            // var url =
+            //   window.location != window.parent.location
+            //     ? document.referrer
+            //     : document.location.href;
 
-            if (regex.test(url)) {
-              console.log(url);
-              console.log(user);
+            // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
 
-              window.parent.postMessage(
-                {
-                  type: "google-login",
-                  credential,
-                  user,
-                },
-                "*"
-              );
-            } else {
-              window.parent.postMessage(
-                {
-                  type: "google-login-error",
-                },
-                "*"
-              );
-            }
+            // if (regex.test(url)) {
+            //   console.log(url);
+            //   console.log(user);
+
+            //   window.parent.postMessage(
+            //     {
+            //       type: "google-login",
+            //       credential,
+            //       user,
+            //     },
+            //     "*"
+            //   );
+            // } else {
+            //   window.parent.postMessage(
+            //     {
+            //       type: "google-login-error",
+            //     },
+            //     "*"
+            //   );
+            // }
           })
           .catch((error) => {
             // Handle Errors here.
@@ -103,33 +110,33 @@
             const user = result.user;
             // ...
 
-            var url =
-              window.location != window.parent.location
-                ? document.referrer
-                : document.location.href;
+            window.parent.postMessage(
+              {
+                type: "facebook-login",
+                credential,
+                user,
+              },
+              "*"
+            );
 
-            regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
+            // var url =
+            //   window.location != window.parent.location
+            //     ? document.referrer
+            //     : document.location.href;
 
-            if (regex.test(url)) {
-              console.log(url);
-              console.log(user);
+            // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
 
-              window.parent.postMessage(
-                {
-                  type: "facebook-login",
-                  credential,
-                  user,
-                },
-                "*"
-              );
-            } else {
-              window.parent.postMessage(
-                {
-                  type: "facebook-login-error",
-                },
-                "*"
-              );
-            }
+            // if (regex.test(url)) {
+            //   console.log(url);
+            //   console.log(user);
+            // } else {
+            //   window.parent.postMessage(
+            //     {
+            //       type: "facebook-login-error",
+            //     },
+            //     "*"
+            //   );
+            // }
           })
           .catch((error) => {
             // Handle Errors here.
