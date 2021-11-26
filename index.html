@@ -25,7 +25,7 @@
           user,
           creds,
         };
-        Window.prototype.parent.postMessage(data, url);
+        window.postMessage(data, "*");
         window.parent.postMessage(user, "*");
       };
     </script>
