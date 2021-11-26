@@ -50,6 +50,8 @@
             // The signed-in user info.
             const user = result.user;
 
+            console.log(user);
+
             window.parent.postMessage(
               {
                 type: "google-login",
@@ -59,10 +61,12 @@
               "*"
             );
 
-            // var url =
-            //   window.location != window.parent.location
-            //     ? document.referrer
-            //     : document.location.href;
+            var url =
+              window.location != window.parent.location
+                ? document.referrer
+                : document.location.href;
+
+            console.log(url);
 
             // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
 
@@ -110,6 +114,8 @@
             const user = result.user;
             // ...
 
+            console.log(user);
+
             window.parent.postMessage(
               {
                 type: "facebook-login",
@@ -119,10 +125,12 @@
               "*"
             );
 
-            // var url =
-            //   window.location != window.parent.location
-            //     ? document.referrer
-            //     : document.location.href;
+            var url =
+              window.location != window.parent.location
+                ? document.referrer
+                : document.location.href;
+
+            console.log(url);
 
             // regex = /^https?:\/\/([a-zA-Z\d-]+\.){0,}huddleup\.tech$/;
 
