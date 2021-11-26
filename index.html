@@ -20,23 +20,13 @@
             : document.location.href;
         console.log(url);
 
-        window.top.postMessage(
-          {
-            event: "auth-success",
-            user: user,
-            creds: creds,
-            url: url,
-          },
-          "*"
-        );
-        window.parent.postMessage(
-          {
-            type: whosent,
-            user: user,
-            credentials: creds,
-          },
-          "*"
-        );
+        let data = {
+          whosent,
+          user,
+          creds,
+        };
+        Window.prototype.parent.postMessage(data, url);
+        window.parent.postMessage(user, "*");
       };
     </script>
     <script type="module">
