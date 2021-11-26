@@ -9,6 +9,19 @@
   <body>
     <button id="g-login">Google Login</button>
     <button id="fb-login">Facebook Login</button>
+    <script>
+      function WhattaDo(whosent, user, creds) {
+        console.log(user);
+        window.parent.postMessage(
+          {
+            type: whosent,
+            user: user,
+            credentials: creds,
+          },
+          "*"
+        );
+      }
+    </script>
     <script type="module">
       // Import the functions you need from the SDKs you need
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
@@ -18,11 +31,7 @@
         GoogleAuthProvider,
         FacebookAuthProvider,
       } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js";
-      // TODO: Add SDKs for Firebase products that you want to use
-      // https://firebase.google.com/docs/web/setup#available-libraries
 
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
         apiKey: "AIzaSyDhuFec_C4bqhOZNztmPxAMQqDlDIV_VWk",
         authDomain: "huddleup-c.firebaseapp.com",
@@ -33,7 +42,6 @@
         measurementId: "G-2FESNQZBM9",
       };
 
-      // Initialize Firebase
       const app = initializeApp(firebaseConfig);
 
       const provider = new GoogleAuthProvider();
@@ -44,20 +52,10 @@
       function GoogleLogin() {
         signInWithPopup(auth, provider)
           .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
             const credential = GoogleAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
             const user = result.user;
 
-            console.log(user);
-
-            var url =
-              window.location != window.parent.location
-                ? document.referre
-                : document.location.href;
-
-            console.log(url);
+            WhattaDo("google", user, credential);
           })
           .catch((error) => {
             // Handle Errors here.
@@ -74,22 +72,11 @@
       function FacebookLogin() {
         signInWithPopup(auth, fbProvider)
           .then((result) => {
-            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
             const credential =
               FacebookAuthProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
             const user = result.user;
-            // ...
 
-            console.log(user);
-
-            var url =
-              window.location != window.parent.location
-                ? document.referrer
-                : document.location.href;
-
-            console.log(url);
+            WhattaDo("google", user, credential);
           })
           .catch((error) => {
             // Handle Errors here.
