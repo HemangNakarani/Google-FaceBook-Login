@@ -7,8 +7,41 @@
     <title>Document</title>
   </head>
   <body>
-    <button id="g-login">Google Login</button>
-    <button id="fb-login">Facebook Login</button>
+    <style>
+      .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      #g-login,
+      #fb-login {
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        background-color: #696fdf;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+      }
+
+      #g-login:hover,
+      #fb-login:hover {
+        background-color: rgb(95, 50, 255);
+      }
+
+      #fb-login {
+        margin-top: 16px;
+      }
+    </style>
+
+    <div class="container">
+      <div id="g-login">Google Login</div>
+      <div id="fb-login">Facebook Login</div>
+    </div>
 
     <script>
       function catchRespGoogle(credential, user) {
